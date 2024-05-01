@@ -3,7 +3,7 @@ name    := `basename ${PWD}`
 version := `git tag -l  | tail -n1`
 
 build:
-    docker build -t {{user}}/{{name}} .
+    docker build -t {{user}}/{{name}}:{{version}} .
 tag:
     docker tag {{user}}/{{name}}:{{version}} {{user}}/{{name}}:latest
 push:
