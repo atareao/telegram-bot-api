@@ -1,2 +1,11 @@
+user    := "atareao"
+name    := `basename ${PWD}`
+version := `git tag -l  | tail -n1`
+
 build:
-    docker build -t atareao/telegram-bot-api .
+    docker build -t {{user}}/{{name}} .
+tag:
+    docker tag {{user}}/{{name}}:{{version}} {{user}}/{{name}}:latest
+push:
+    docker push {{user}}/{{name}} --all-tags
+
